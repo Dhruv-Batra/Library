@@ -19,17 +19,13 @@ export default function LibItem({bookList,setLibList2}){
 
     const classes = useStyles();
 
-    useEffect(()=>{
-        console.log(bookList)
-    },[bookList])
-
     return(
         <Grid 
             container
             alignItems="center"
-            justify="left"
+            justify="flex-start"
         >
-            {bookList.map((item) => 
+            {(bookList.length>0) ? (bookList.map((item) => 
                 <div>
                     <Card className={classes.root}>
                         <CardContent>
@@ -56,7 +52,7 @@ export default function LibItem({bookList,setLibList2}){
                     />
                     <br></br>
                 </div>
-            )}
+            )):<Grid container alignItems="center" justify="center"><p>Add books using the Search page to see them in your library!</p></Grid>}
         </Grid>
     )
 }

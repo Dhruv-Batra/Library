@@ -9,10 +9,6 @@ export default function Searcher(){
   const [bookList,setBookList] = useState([]);
   const axios = require('axios').default;
 
-  useEffect(() => { 
-    console.log(bookList);
-  },[bookList])
-
   function handleClick(){
     axios.get('http://localhost:8080/books/search',{
       params:{
@@ -24,9 +20,13 @@ export default function Searcher(){
     })
     .catch(function(e){
       alert('No Results Found');
-      setBookList([]);
+      window.location.reload();
     })
   }
+
+  useEffect(()=>{
+    console.log(bookList)
+  },[bookList])
 
   return(
     <div>
@@ -44,9 +44,11 @@ export default function Searcher(){
       >
         Search
       </Button>
-      <Item
+      {bookList.length>0?(
+        <Item
         bookList={bookList}
       />
+      ):<div></div>}
     </div>
   )
 }

@@ -14,7 +14,7 @@ const useStyles = makeStyles(({ spacing }) => ({
     },
 }));
 
-export default function Item({bookList}){
+export default function Item({bookList,setBookList}){
 
     const classes = useStyles();
 
@@ -22,7 +22,7 @@ export default function Item({bookList}){
         <Grid 
             container
             alignItems="center"
-            justify="left"
+            justify="flex-start"
         >
             {bookList.map((item) => 
                 <div>
@@ -49,6 +49,8 @@ export default function Item({bookList}){
                         className={classes.action}
                         title={item.volumeInfo.title}
                         authors={item.volumeInfo.authors}
+                        bookList={bookList}
+                        setBookList={setBookList}
                     />
                     <br></br>
                 </div>
