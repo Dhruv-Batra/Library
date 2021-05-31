@@ -1,15 +1,22 @@
 import './App.css';
 import Searcher from './components/Searcher'
 import React from 'react'
+import { Route, Switch } from "react-router-dom";
+import Navbar from './components/Navbar'
+import Library from './components/Library'
 
 function App() {
+
+  document.title="Bookshelf";
+
   return (
     <div className="App">
-      <header className="App-header">
-        <h3>Library</h3>
-      </header>
+      <Navbar/>
       <div className="App-body">
-        <Searcher/>
+        <Switch> 
+          <Route path='/bookshelf' component={Library}/>
+          <Route path = '/' component={Searcher}/>
+        </Switch>
       </div>
     </div>
   );

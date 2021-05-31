@@ -6,7 +6,7 @@ import Item from './Item'
 export default function Searcher(){
 
   const [book, setBook] = useState(null);
-  const [bookList,setBookList] = useState(null);
+  const [bookList,setBookList] = useState([]);
   const axios = require('axios').default;
 
   useEffect(() => { 
@@ -21,6 +21,10 @@ export default function Searcher(){
     })
     .then(function (resp){
       setBookList(resp.data);
+    })
+    .catch(function(e){
+      alert('No Results Found');
+      setBookList([]);
     })
   }
 
@@ -40,6 +44,9 @@ export default function Searcher(){
       >
         Search
       </Button>
+      <Item
+        bookList={bookList}
+      />
     </div>
   )
 }
