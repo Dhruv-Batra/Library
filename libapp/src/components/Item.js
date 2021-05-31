@@ -22,7 +22,7 @@ export default function Item({bookList}){
         <Grid 
             container
             alignItems="center"
-            justify="center"
+            justify="left"
         >
             {bookList.map((item) => 
                 <div>

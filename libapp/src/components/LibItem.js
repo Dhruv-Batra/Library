@@ -15,7 +15,7 @@ const useStyles = makeStyles(({ spacing }) => ({
     },
 }));
 
-export default function LibItem({bookList,setLibList}){
+export default function LibItem({bookList,setLibList2}){
 
     const classes = useStyles();
 
@@ -27,7 +27,7 @@ export default function LibItem({bookList,setLibList}){
         <Grid 
             container
             alignItems="center"
-            justify="center"
+            justify="left"
         >
             {bookList.map((item) => 
                 <div>
@@ -52,7 +52,7 @@ export default function LibItem({bookList,setLibList}){
                     </Card>
                     <Remover
                         docid={item.id}
-                        setLibList={setLibList}
+                        setLibList2={setLibList2}
                     />
                     <br></br>
                 </div>
