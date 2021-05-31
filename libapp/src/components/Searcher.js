@@ -33,7 +33,7 @@ export default function Searcher(){
       <br></br>
       <TextField
         variant="outlined"
-        label="Book Name"
+        label="Book Name or Author"
         onChange={(e)=>setBook(e.target.value)}
       />
       <br></br><br></br>
