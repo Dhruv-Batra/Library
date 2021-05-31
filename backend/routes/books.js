@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const axios = require('axios');
 const db = require('../firebase')
-const nanoid =  require('nanoid');
+const cryptoRandomString =  require('crypto-random-string');
 
 const book_key = process.env.BOOK_KEY;
 
@@ -29,10 +29,11 @@ router.get('/library', async (req,res) => {
 router.post('/add', async (req, res) => {
     const data = {
         title: req.body.params.title,
-        author: req.body.params.authors,
+        authors: req.body.params.authors,
     };
-    await db.collection('user1').doc(nanoid()).set(data); //fix nanoid
-    res.sendStatus(temp.id);
+    const rand = (Math.random().toString(36)+'00000000000000000').slice(2, 12);
+    await db.collection('user1').doc(rand).set(data);
+    res.sendStatus(200);
 })
 
 module.exports= router;

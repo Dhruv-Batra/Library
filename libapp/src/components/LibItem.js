@@ -20,7 +20,7 @@ export default function LibItem({bookList}){
 
     useEffect(()=>{
         console.log(bookList)
-    })
+    },[bookList])
 
     return(
         <Grid 
