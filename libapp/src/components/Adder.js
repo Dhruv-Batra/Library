@@ -4,6 +4,8 @@ import {useState} from "react"
 
 export default function Adder({title,authors,bookList,setBookList}){
 
+    const [isClicked,setIsClicked] = useState("Add to Library");
+
     function handleClick(){
         axios.post('http://localhost:8080/books/add',{
             params:{
@@ -12,24 +14,11 @@ export default function Adder({title,authors,bookList,setBookList}){
             },
         })
         .then(function (resp){
-            console.log(resp.data)
+            console.log(resp.data);
         })
         .then(function(resp){
-            removeBook();
+            setIsClicked("Added to Library");
         })
-    }
-
-    function removeBook(){
-        for(var i=0;i<bookList.length;i++){
-            if(bookList[i].volumeInfo.title===title&&bookList[i].volumeInfo.authors===authors){
-                var removeme = i
-                break;
-            }
-        }
-        bookList.splice(removeme,1);
-        // setBookList(()=>{
-        //     return bookList;
-        // });
     }
 
     return(
@@ -39,7 +28,7 @@ export default function Adder({title,authors,bookList,setBookList}){
                 color="primary"
                 onClick={handleClick}
             >
-                Add to Library
+                {isClicked}
             </Button>
         </div>
     )
