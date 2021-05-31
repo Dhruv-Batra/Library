@@ -5,7 +5,6 @@ import LibItem from './LibItem'
 export default function Library(){ 
 
     const [libList, setLibList] = useState([]);
-    const[update,didUpdate] = useState(false);
 
     useEffect(()=>{
         const url = 'http://localhost:8080/books/library'
@@ -23,6 +22,7 @@ export default function Library(){
         <div>
             <LibItem
                 bookList={libList}
+                setLibList={setLibList}
             />
         </div>
     )

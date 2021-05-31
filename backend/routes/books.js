@@ -27,12 +27,18 @@ router.get('/library', async (req,res) => {
 })
 
 router.post('/add', async (req, res) => {
+    const rand = (Math.random().toString(36)+'00000000000000000').slice(2, 12);
     const data = {
+        id: rand,
         title: req.body.params.title,
         authors: req.body.params.authors,
     };
-    const rand = (Math.random().toString(36)+'00000000000000000').slice(2, 12);
     await db.collection('user1').doc(rand).set(data);
+    res.sendStatus(200);
+})
+
+router.delete('/remove', async (req, res) => {
+    await db.collection('user1').doc(req.query.docid).delete();
     res.sendStatus(200);
 })
 

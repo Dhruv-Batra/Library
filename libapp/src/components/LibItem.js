@@ -1,5 +1,6 @@
 import {Typography,Grid,Card, CardContent, CardActions, makeStyles, Button} from '@material-ui/core'
 import { useEffect } from 'react';
+import Remover from './Remover'
 
 const useStyles = makeStyles(({ spacing }) => ({
     root: {
@@ -14,7 +15,7 @@ const useStyles = makeStyles(({ spacing }) => ({
     },
 }));
 
-export default function LibItem({bookList}){
+export default function LibItem({bookList,setLibList}){
 
     const classes = useStyles();
 
@@ -49,6 +50,10 @@ export default function LibItem({bookList}){
                             }
                         </CardContent>
                     </Card>
+                    <Remover
+                        docid={item.id}
+                        setLibList={setLibList}
+                    />
                     <br></br>
                 </div>
             )}
